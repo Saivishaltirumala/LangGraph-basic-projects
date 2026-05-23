@@ -7,6 +7,7 @@ A hands-on learning path through LangGraph — each project introduces a unique 
 | # | Project | Concepts Covered |
 |---|---------|-----------------|
 | 1 | Translation & Summary Pipeline | TypedDict State, `operator.add` reducer, sequential nodes & edges, compile & invoke |
+| 2 | Customer Support Ticket Router | Conditional edges, cycles/loops, loop prevention, LLM structured output |
 
 ## Setup
 
@@ -20,7 +21,7 @@ pip install -r requirements.txt
 
 # 3. Configure environment variables
 cp .env.example .env
-# Edit .env and add your OpenAI API key
+# Edit .env and add your Anthropic API key
 
 # 4. Run a project
 python project_01_translation_summary_pipeline/main.py
@@ -29,5 +30,5 @@ python project_01_translation_summary_pipeline/main.py
 ## Prerequisites
 
 - Python 3.10+
-- An OpenAI API key
+- An Anthropic API key
 - Basic Python knowledge
