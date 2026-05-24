@@ -9,6 +9,7 @@ A hands-on learning path through LangGraph — each project introduces a unique 
 | 1 | Translation & Summary Pipeline | TypedDict State, `operator.add` reducer, sequential nodes & edges, compile & invoke |
 | 2 | Customer Support Ticket Router | Conditional edges, cycles/loops, loop prevention, LLM structured output |
 | 3 | Fault Tolerance & Human-in-the-Loop | RetryPolicy, MemorySaver checkpointing, `interrupt_before`, `Command(resume=True)` |
+| 4 | Supervisor Multi-Agent Architecture | Subgraphs, state isolation, supervisor routing pattern |
 
 ## Setup
 
