@@ -27,7 +27,7 @@ cp .env.example .env
 # Edit .env and add your Anthropic API key
 
 # 4. Run a project
-python project_01_translation_summary_pipeline/main.py
+python 01_translation_summary_pipeline.py
 ```
 
 ## Prerequisites
