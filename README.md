@@ -10,6 +10,7 @@ A hands-on learning path through LangGraph — each project introduces a unique 
 | 2 | Customer Support Ticket Router | Conditional edges, cycles/loops, loop prevention, LLM structured output |
 | 3 | Fault Tolerance & Human-in-the-Loop | RetryPolicy, MemorySaver checkpointing, `interrupt_before`, `Command(resume=True)` |
 | 4 | Supervisor Multi-Agent Architecture | Subgraphs, state isolation, supervisor routing pattern |
+| 5 | Parallel Fan-Out & Fan-In | Parallel node execution, `operator.add` for concurrent writes, automatic fan-in barrier |
 
 ## Setup
 
