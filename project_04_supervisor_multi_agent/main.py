@@ -172,6 +172,7 @@ class SupervisorState(TypedDict):
     research_summary: str
     draft_article: str
     next_step: str
+    supervisor_loops: int  # loop prevention counter
 
 
 # --- Structured output for the Supervisor's routing decision ---
@@ -194,7 +195,17 @@ def supervisor(state: SupervisorState) -> dict:
     """
     The Supervisor inspects the current State and decides the next step.
     Uses structured output to guarantee a clean routing decision.
+
+    Loop prevention: if the supervisor has looped 5+ times, force finish
+    regardless of what the LLM says. This prevents infinite loops where
+    the LLM keeps calling the same agent repeatedly.
     """
+
+    loops = state.get("supervisor_loops", 0) + 1
+
+    # Hard safety limit — force finish after 5 loops
+    if loops >= 5:
+        return {"next_step": "finish", "supervisor_loops": loops}
 
     decision: SupervisorDecision = structured_supervisor.invoke(
         f"You are a project supervisor managing a Research Agent and a Writer Agent.\n\n"
@@ -208,7 +219,7 @@ def supervisor(state: SupervisorState) -> dict:
         f"  - 'finish'   → if both research_summary and draft_article are complete"
     )
 
-    return {"next_step": decision.next}
+    return {"next_step": decision.next, "supervisor_loops": loops}
 
 
 def route_supervisor(state: SupervisorState) -> str:
@@ -261,6 +272,7 @@ if __name__ == "__main__":
         "research_summary": "",
         "draft_article": "",
         "next_step": "",
+        "supervisor_loops": 0,
     })
 
     print("\n" + "-" * 60)
